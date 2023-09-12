@@ -12,6 +12,9 @@ using AGI.STKObjects;
 using stdole;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Reflection;
+using DataImporter;
+using System.Drawing;
 
 #endregion
 
@@ -32,6 +35,8 @@ namespace FC.UIPlugin.EOIRReflectanceMap
     {
 
         #region Variable Declaration
+
+        private IPictureDisp menuPicture;
 
         private IAgUiPluginSite m_psite;
         
@@ -77,7 +82,16 @@ namespace FC.UIPlugin.EOIRReflectanceMap
         /// </summary>
         public void OnInitializeToolbar(IAgUiPluginToolbarBuilder ToolbarBuilder)
         {
-            ToolbarBuilder.AddButton("FC.UIPlugin.EOIRReflectanceMap.LaunchUI", "EOIR Reflectance Map Generator", "Launch the EOIR Reflectance Map Generator", AgEToolBarButtonOptions.eToolBarButtonOptionAlwaysOn, null);
+            Image menuImage;
+
+
+
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+            menuImage = Image.FromStream(currentAssembly.GetManifestResourceStream("EOIRReflectanceMap.Resources.PluginImage.png"));
+            menuPicture = OlePictureHelper.OlePictureFromImage(menuImage);
+            ToolbarBuilder.AddButton("FC.UIPlugin.EOIRReflectanceMap.LaunchUI", "EOIR Reflectance Map Generator", "Launch the EOIR Reflectance Map Generator", AgEToolBarButtonOptions.eToolBarButtonOptionAlwaysOn, menuPicture);
+
+
         }
 
         #endregion
@@ -97,13 +111,40 @@ namespace FC.UIPlugin.EOIRReflectanceMap
         /// </summary>
         public void Exec(string CommandName, IAgProgressTrackCancel TrackCancel, IAgUiPluginCommandParameters Parameters)
         {
-            if (string.Compare(CommandName, "FC.UIPlugin.EOIRReflectanceMap.LaunchUI", true) == 0)
+            OpenUserInterface();
+
+        }
+
+        #endregion
+
+        public void OpenUserInterface()
+        {
+            IAgUiPluginWindowSite windows = m_psite as IAgUiPluginWindowSite;
+
+            if (windows == null)
             {
-                MessageBox.Show("Hello World!");
+                MessageBox.Show("Host application is unable to open windows.");
+            }
+            else
+            {
+                IAgUiPluginWindowCreateParameters winParams = windows.CreateParameters();
+                winParams.AllowMultiple = false;
+                winParams.AssemblyPath = this.GetType().Assembly.Location;
+                winParams.UserControlFullName = typeof(UserInterface).FullName;
+                winParams.Caption = "EOIR Reflectance Map Generator";
+                winParams.DockStyle = AgEDockStyle.eDockStyleFloating;
+                winParams.Width = 500;
+                winParams.Height = 500;
+                winParams.X = 0;
+                winParams.Y = 0;
+                object obj = windows.CreateNetToolWindowParam(this, winParams);
             }
         }
+
     }
 
-    #endregion
+   
+
+
 }
 
