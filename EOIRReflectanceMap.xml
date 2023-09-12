@@ -1,0 +1,13 @@
+<?xml version = "1.0"?>
+<AGIRegistry version = "1.0">
+  <CategoryRegistry>
+    <Category Name = "UiPlugins">
+<NETUiPlugin 
+         DisplayName="EOIR Reflectance Map Generator"
+         TypeName="FC.UIPlugin.EOIRReflectanceMap.EOIRReflectanceMap"
+         AssemblyName="EOIRReflectanceMap, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+         CodeBase="C:\Users\admin\Documents\Elisa\03. Resources\03_Plugins\EOIRReflectanceMap\EOIRReflectanceMap\bin\Debug">
+	  </NETUiPlugin>
+	</Category>
+  </CategoryRegistry>
+</AGIRegistry>
