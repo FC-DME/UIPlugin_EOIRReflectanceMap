@@ -38,7 +38,7 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
         private IPictureDisp menuPicture;
 
-        private IAgUiPluginSite m_psite;
+        public IAgUiPluginSite m_psite;
         
         private AgStkObjectRoot m_root;
         public AgStkObjectRoot STKRoot
@@ -74,7 +74,7 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
         public void OnDisplayContextMenu(IAgUiPluginMenuBuilder MenuBuilder)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         /// <summary>
