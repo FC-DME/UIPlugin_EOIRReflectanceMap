@@ -38,7 +38,7 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
         private IPictureDisp menuPicture;
 
-        public IAgUiPluginSite m_psite;
+        public static IAgUiPluginSite m_psite;
         
         private AgStkObjectRoot m_root;
         public AgStkObjectRoot STKRoot
@@ -133,8 +133,8 @@ namespace FC.UIPlugin.EOIRReflectanceMap
                 winParams.UserControlFullName = typeof(UserInterface).FullName;
                 winParams.Caption = "EOIR Reflectance Map Generator";
                 winParams.DockStyle = AgEDockStyle.eDockStyleFloating;
-                winParams.Width = 500;
-                winParams.Height = 500;
+                winParams.Width = 450;
+                winParams.Height = 250;
                 winParams.X = 0;
                 winParams.Y = 0;
                 object obj = windows.CreateNetToolWindowParam(this, winParams);

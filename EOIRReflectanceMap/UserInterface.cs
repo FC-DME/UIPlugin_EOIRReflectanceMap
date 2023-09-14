@@ -66,7 +66,14 @@ namespace FC.UIPlugin.EOIRReflectanceMap
                     string name = asset.InstanceName;
                     string classType = asset.ClassName;
 
-                    m_root.ExecuteCommand($"Graphics */{classType}/{name} Show On");
+                    try
+                    {
+                        m_root.ExecuteCommand($"Graphics */{classType}/{name} Show On");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Error");
+                    }
 
                 }
             }
@@ -135,7 +142,6 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
             // Convert image
             Bitmap image = new Bitmap($@"{path}\{imageName}.png");
-            pictureBox1.Image = image;
 
             float[,] meanImage = new float[image.Width, image.Height];
             Color pixelColor;
@@ -159,15 +165,19 @@ namespace FC.UIPlugin.EOIRReflectanceMap
                 }
             }
 
+            // Transpose matrix to rotate image correctly
+            float[,] map = Transpose(meanImage);
+            
+
             // Write to CSV
             using (StreamWriter outfile = new StreamWriter($@"{path}\{imageName}.csv"))
             {
-                for (int i = 0; i < image.Width; i++)
+                for (int i = 0; i < map.GetLength(0); i++)
                 {
                     string content = "";
-                    for (int j = 0; j < image.Height; j++)
+                    for (int j = 0; j < map.GetLength(1); j++)
                     {
-                        content += meanImage[i, j].ToString() + ",";
+                        content += map[i, j].ToString() + ",";
                     }
                     outfile.WriteLine(content);
                 }
@@ -184,7 +194,7 @@ namespace FC.UIPlugin.EOIRReflectanceMap
                     string replacement = Regex.Replace(coordinates[3], @"\t|\n|\r", "");
                     coordinates[3] = replacement;
 
-                    //m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgInfo, "MyPluginName: This message is for your information");
+                    EOIRReflectanceMap.m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgInfo, $"Successfully created {imageName} reflectance map and saved at {path}. The corner coordinates are: minimum latitude: {coordinates[0]}, maximum latitude: {coordinates[1]}, minimum longitude: {coordinates[2]}, maximum longitude: {coordinates[3]}.");
 
                     // Add to EOIR config if required
                     if (checkBox_AddToConfig.Checked)
@@ -215,6 +225,8 @@ namespace FC.UIPlugin.EOIRReflectanceMap
                         // SW
                         m_root.ExecuteCommand($"EOIR */ PropertyMapData SetCoordinateP4Lon Earth {imageName} {coordinates[2]}");
                         m_root.ExecuteCommand($"EOIR */ PropertyMapData SetCoordinateP4Lat Earth {imageName} {coordinates[0]}");
+
+                        EOIRReflectanceMap.m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgInfo, $"Successfully added {imageName} reflectance map to the EOIR configuration.");
                     }
                 }
                 
@@ -222,9 +234,27 @@ namespace FC.UIPlugin.EOIRReflectanceMap
             }
 
         }
+        
+        public float[,] Transpose(float[,] matrix)
+        {
+            int w = matrix.GetLength(0);
+            int h = matrix.GetLength(1);
+
+            float[,] result = new float[h, w];
+
+            for (int i = 0; i < w; i++)
+            {
+                for (int j = 0; j < h; j++)
+                {
+                    result[j, i] = matrix[i, j];
+                }
+            }
+
+            return result;
+        }
 
 
-       
+
 
     }
 }
