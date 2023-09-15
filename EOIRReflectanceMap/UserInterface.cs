@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿#region References
+
+using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using AGI.Ui.Plugins;
 using AGI.STKObjects;
 using AGI.STKUtil;
 using stdole;
-using System.Drawing.Imaging;
-using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Reflection;
+
+#endregion
 
 namespace FC.UIPlugin.EOIRReflectanceMap
 {
@@ -28,6 +27,7 @@ namespace FC.UIPlugin.EOIRReflectanceMap
         private AgStkObjectRoot m_root;
 
         #endregion
+
         public UserInterface()
         {
             InitializeComponent();
@@ -54,10 +54,16 @@ namespace FC.UIPlugin.EOIRReflectanceMap
             return null;
         }
 
-       
-
+        /// <summary>
+        /// Show / hide assets depending on user selction
+        /// </summary>
         private void radioButton_ShowAssets_CheckedChanged(object sender, EventArgs e)
         {
+            if (m_root.CurrentScenario == null)
+            {
+                EOIRReflectanceMap.m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgWarning, "Please ensure a scenario is loaded.");
+                return;
+            }
 
             if (radioButton_ShowAssets.Checked)
             {
@@ -99,8 +105,16 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
         }
 
+        /// <summary>
+        /// Show / hide Lat/Lon lines depending on user selction
+        /// </summary>
         private void radioButton_ShowLines_CheckedChanged(object sender, EventArgs e)
         {
+            if (m_root.CurrentScenario == null)
+            {
+                EOIRReflectanceMap.m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgWarning, "Please ensure a scenario is loaded.");
+                return;
+            }
             if (radioButton_ShowLines.Checked)
             {
                 m_root.ExecuteCommand("MapDetails * LatLon Lat On");
@@ -111,6 +125,9 @@ namespace FC.UIPlugin.EOIRReflectanceMap
             }
         }
 
+        /// <summary>
+        /// Ensure proper formatting of image name
+        /// </summary>
         private void textBox_ImageName_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Only allow letters, numbers, hyphens and underscores (and allow user to use backspace key)
@@ -120,6 +137,9 @@ namespace FC.UIPlugin.EOIRReflectanceMap
             }
         }
 
+        /// <summary>
+        /// Browse for image save location
+        /// </summary>
         private void button_Browse_Click(object sender, EventArgs e)
         {
             var folderDialog = new FolderBrowserDialog();
@@ -130,8 +150,17 @@ namespace FC.UIPlugin.EOIRReflectanceMap
             }
         }
 
+        /// <summary>
+        /// Create reflectance map
+        /// </summary>
         private void button_Run_Click(object sender, EventArgs e)
         {
+            if (m_root.CurrentScenario == null)
+            {
+                EOIRReflectanceMap.m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgWarning, "Please ensure a scenario is loaded.");
+                return;
+            }
+
             string imageName = textBox_ImageName.Text;
             string path = textBox_Path.Text;
 
@@ -167,7 +196,6 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
             // Transpose matrix to rotate image correctly
             float[,] map = Transpose(meanImage);
-            
 
             // Write to CSV
             using (StreamWriter outfile = new StreamWriter($@"{path}\{imageName}.csv"))
@@ -235,6 +263,11 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
         }
         
+        /// <summary>
+        /// Transpose a matrix
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <returns></returns>
         public float[,] Transpose(float[,] matrix)
         {
             int w = matrix.GetLength(0);
@@ -252,9 +285,26 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
             return result;
         }
+        
+        /// <summary>
+        /// Open the plugin help
+        /// </summary>
+        private void button_Help_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                string fileName = "Help.htm";
+                string ex = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string path = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/Resources/{fileName}";
+                string s = $"OpenHtmlViewer / \"{path}\"";
+                m_root.ExecuteCommand(s);
 
-
-
-
+            }
+            catch
+            {
+                MessageBox.Show("Help file not found. Please check it is present at \"Plugin Install Folder\"\\Resources\\Help.html.");
+            }
+        }
     }
 }

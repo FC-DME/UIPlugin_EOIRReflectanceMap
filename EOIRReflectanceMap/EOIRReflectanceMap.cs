@@ -1,10 +1,6 @@
 ﻿#region References
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AGI.Ui.Application;
 using AGI.Ui.Core;
 using AGI.Ui.Plugins;
@@ -19,7 +15,6 @@ using System.Drawing;
 #endregion
 
 namespace FC.UIPlugin.EOIRReflectanceMap
-
 {
 
     #region Class Attributes
@@ -30,7 +25,6 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
     #endregion
 
- 
     public class EOIRReflectanceMap: IAgUiPlugin, IAgUiPluginCommandTarget
     {
 
@@ -117,6 +111,9 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
         #endregion
 
+        /// <summary>
+        /// Launch the UI
+        /// </summary>
         public void OpenUserInterface()
         {
             IAgUiPluginWindowSite windows = m_psite as IAgUiPluginWindowSite;
@@ -133,7 +130,7 @@ namespace FC.UIPlugin.EOIRReflectanceMap
                 winParams.UserControlFullName = typeof(UserInterface).FullName;
                 winParams.Caption = "EOIR Reflectance Map Generator";
                 winParams.DockStyle = AgEDockStyle.eDockStyleFloating;
-                winParams.Width = 450;
+                winParams.Width = 355;
                 winParams.Height = 250;
                 winParams.X = 0;
                 winParams.Y = 0;
@@ -142,9 +139,6 @@ namespace FC.UIPlugin.EOIRReflectanceMap
         }
 
     }
-
-   
-
 
 }
 

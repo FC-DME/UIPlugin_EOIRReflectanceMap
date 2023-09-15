@@ -44,6 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog_Image = new System.Windows.Forms.FolderBrowserDialog();
             this.checkBox_AddToConfig = new System.Windows.Forms.CheckBox();
+            this.button_Help = new System.Windows.Forms.Button();
             this.groupBox_Setup.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -52,10 +53,10 @@
             // 
             // button_Run
             // 
-            this.button_Run.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Run.Location = new System.Drawing.Point(294, 248);
+            this.button_Run.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_Run.Location = new System.Drawing.Point(113, 250);
             this.button_Run.Name = "button_Run";
-            this.button_Run.Size = new System.Drawing.Size(168, 38);
+            this.button_Run.Size = new System.Drawing.Size(222, 37);
             this.button_Run.TabIndex = 0;
             this.button_Run.Text = "Create reflectance map";
             this.button_Run.UseVisualStyleBackColor = true;
@@ -206,16 +207,28 @@
             this.checkBox_AddToConfig.Text = "Add reflectance map to the EOIR configuration for this scenario";
             this.checkBox_AddToConfig.UseVisualStyleBackColor = true;
             // 
+            // button_Help
+            // 
+            this.button_Help.Location = new System.Drawing.Point(394, 261);
+            this.button_Help.Margin = new System.Windows.Forms.Padding(0);
+            this.button_Help.Name = "button_Help";
+            this.button_Help.Size = new System.Drawing.Size(63, 25);
+            this.button_Help.TabIndex = 4;
+            this.button_Help.Text = "Help";
+            this.button_Help.UseVisualStyleBackColor = true;
+            this.button_Help.Click += new System.EventHandler(this.button_Help_Click);
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button_Help);
             this.Controls.Add(this.checkBox_AddToConfig);
             this.Controls.Add(this.groupBox_ImageSetup);
             this.Controls.Add(this.groupBox_Setup);
             this.Controls.Add(this.button_Run);
             this.Name = "UserInterface";
-            this.Size = new System.Drawing.Size(465, 289);
+            this.Size = new System.Drawing.Size(465, 298);
             this.groupBox_Setup.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -246,5 +259,6 @@
         private System.Windows.Forms.TextBox textBox_Path;
         private System.Windows.Forms.Button button_Browse;
         private System.Windows.Forms.CheckBox checkBox_AddToConfig;
+        private System.Windows.Forms.Button button_Help;
     }
 }
