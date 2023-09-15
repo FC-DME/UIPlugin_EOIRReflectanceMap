@@ -12,6 +12,8 @@ using stdole;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using static System.Net.Mime.MediaTypeNames;
+using DataImporter;
 
 #endregion
 
@@ -51,7 +53,10 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
         public IPictureDisp GetIcon()
         {
-            return null;
+            System.Drawing.Image menuImage;
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+            menuImage = System.Drawing.Image.FromStream(currentAssembly.GetManifestResourceStream("EOIRReflectanceMap.Resources.PluginImage.png"));
+            return OlePictureHelper.OlePictureFromImage(menuImage);
         }
 
         /// <summary>
@@ -160,9 +165,29 @@ namespace FC.UIPlugin.EOIRReflectanceMap
                 EOIRReflectanceMap.m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgWarning, "Please ensure a scenario is loaded.");
                 return;
             }
-
+           
+            if (m_root.GetLicensingReport().Contains("ExcludedProduct Name=\"stk_mission_level2\""))
+            {
+                EOIRReflectanceMap.m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgWarning, "Please ensure you are using a Premium or Enterprise license.");
+                return;
+            }
+            try
+            {
+                m_root.ExecuteCommand("EOIR_R */ PropertyMapData GetNumberOfMaps Earth");
+            }
+            catch
+            {
+                EOIRReflectanceMap.m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgWarning, "Please ensure you have STK EOIR installed.");
+                return;
+            }
             string imageName = textBox_ImageName.Text;
             string path = textBox_Path.Text;
+
+            if (imageName == "" || path == "")
+            {
+                EOIRReflectanceMap.m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgWarning, "Please enter a valid image name and path.");
+                return;
+            }
 
             // Take screenshot
             m_root.ExecuteCommand($"MapSnap * ToFile \"{path}\\{imageName}.png\" 1");
