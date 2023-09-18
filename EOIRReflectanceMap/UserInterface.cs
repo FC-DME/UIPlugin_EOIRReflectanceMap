@@ -160,6 +160,8 @@ namespace FC.UIPlugin.EOIRReflectanceMap
         /// </summary>
         private void button_Run_Click(object sender, EventArgs e)
         {
+
+            // Error handling
             if (m_root.CurrentScenario == null)
             {
                 EOIRReflectanceMap.m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgWarning, "Please ensure a scenario is loaded.");
@@ -182,7 +184,6 @@ namespace FC.UIPlugin.EOIRReflectanceMap
             }
             string imageName = textBox_ImageName.Text;
             string path = textBox_Path.Text;
-
             if (imageName == "" || path == "")
             {
                 EOIRReflectanceMap.m_psite.LogMessage(AgEUiPluginLogMsgType.eUiPluginLogMsgWarning, "Please enter a valid image name and path.");
