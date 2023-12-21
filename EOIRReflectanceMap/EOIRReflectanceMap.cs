@@ -63,7 +63,7 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
         public void OnDisplayConfigurationPage(IAgUiPluginConfigurationPageBuilder ConfigPageBuilder)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void OnDisplayContextMenu(IAgUiPluginMenuBuilder MenuBuilder)
@@ -81,7 +81,7 @@ namespace FC.UIPlugin.EOIRReflectanceMap
 
 
             Assembly currentAssembly = Assembly.GetExecutingAssembly();
-            menuImage = Image.FromStream(currentAssembly.GetManifestResourceStream("EOIRReflectanceMap.Resources.PluginImage.png"));
+            menuImage = Image.FromStream(currentAssembly.GetManifestResourceStream("EOIRReflectanceMap.Resources.Sun.png"));
             menuPicture = OlePictureHelper.OlePictureFromImage(menuImage);
             ToolbarBuilder.AddButton("FC.UIPlugin.EOIRReflectanceMap.LaunchUI", "EOIR Reflectance Map Generator", "Launch the EOIR Reflectance Map Generator", AgEToolBarButtonOptions.eToolBarButtonOptionAlwaysOn, menuPicture);
 

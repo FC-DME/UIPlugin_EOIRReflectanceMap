@@ -8,4 +8,4 @@ C:\Users\admin\Documents\Elisa\03. Resources\03_Plugins\EOIRReflectanceMap\EOIRR
 C:\Users\admin\Documents\Elisa\03. Resources\03_Plugins\EOIRReflectanceMap\EOIRReflectanceMap\obj\Debug\FC.UIPlugin.EOIRReflectanceMap.csproj.GenerateResource.cache
 C:\Users\admin\Documents\Elisa\03. Resources\03_Plugins\EOIRReflectanceMap\EOIRReflectanceMap\obj\Debug\EOIRReflectanceMap.Properties.Resources.resources
 C:\Users\admin\Documents\Elisa\03. Resources\03_Plugins\EOIRReflectanceMap\EOIRReflectanceMap\bin\Debug\Resources\Help.htm
-C:\Users\admin\Documents\Elisa\03. Resources\03_Plugins\EOIRReflectanceMap\EOIRReflectanceMap\bin\Debug\Resources\PluginImage.png
+C:\Users\admin\Documents\Elisa\03. Resources\03_Plugins\EOIRReflectanceMap\EOIRReflectanceMap\bin\Debug\Resources\Sun.png

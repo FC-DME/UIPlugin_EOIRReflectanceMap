@@ -55,7 +55,7 @@ namespace FC.UIPlugin.EOIRReflectanceMap
         {
             System.Drawing.Image menuImage;
             Assembly currentAssembly = Assembly.GetExecutingAssembly();
-            menuImage = System.Drawing.Image.FromStream(currentAssembly.GetManifestResourceStream("EOIRReflectanceMap.Resources.PluginImage.png"));
+            menuImage = System.Drawing.Image.FromStream(currentAssembly.GetManifestResourceStream("EOIRReflectanceMap.Resources.Sun.png"));
             return OlePictureHelper.OlePictureFromImage(menuImage);
         }
 

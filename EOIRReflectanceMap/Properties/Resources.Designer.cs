@@ -60,14 +60,49 @@ namespace EOIRReflectanceMap.Properties {
             }
         }
         
-       
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;en&quot;&gt;
+        ///
+        ///&lt;head&gt;
+        ///	&lt;meta charset=&quot;UTF-8&quot; /&gt;
+        ///	&lt;title&gt;
+        ///		EOIR Reflectance Map Generator Help
+        ///	&lt;/title&gt;
+        ///&lt;/head&gt;
+        ///
+        ///
+        ///
+        ///&lt;body&gt;
+        ///	
+        ///	&lt;article&gt;
+        ///		
+        ///		&lt;!-- header tag starts --&gt;
+        ///		&lt;header&gt;
+        ///
+        ///            &lt;h2&gt;Reflectance Map Generator Help&lt;/h2&gt;
+        ///
+        ///			&lt;!-- nav tag starts --&gt;
+        ///			&lt;nav&gt;
+        ///				&lt;a href=&quot;#About&quot;&gt;About&lt;/a&gt; &amp;emsp;
+        ///                &lt;a href=&quot;#HowTo&quot;&gt;How to Use the Plugin&lt;/a&gt; &amp;emsp;
+        ///                &lt;a href=&quot;#Contact&quot;&gt;Contact&lt;/a&gt;				
+        ///			&lt;/nav&gt;
+        ///			&lt;!-- nav tag ends --&gt;
+        ///		&lt;/he [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PluginImage {
+        internal static System.Drawing.Bitmap Sun {
             get {
-                object obj = ResourceManager.GetObject("PluginImage", resourceCulture);
+                object obj = ResourceManager.GetObject("Sun", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
