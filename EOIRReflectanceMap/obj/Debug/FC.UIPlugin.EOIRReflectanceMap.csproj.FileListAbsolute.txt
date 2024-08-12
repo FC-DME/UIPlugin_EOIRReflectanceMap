@@ -9,3 +9,14 @@ C:\Users\admin\Documents\Elisa\03. Resources\03_Plugins\EOIRReflectanceMap\EOIRR
 C:\Users\admin\Documents\Elisa\03. Resources\03_Plugins\EOIRReflectanceMap\EOIRReflectanceMap\obj\Debug\EOIRReflectanceMap.Properties.Resources.resources
 C:\Users\admin\Documents\Elisa\03. Resources\03_Plugins\EOIRReflectanceMap\EOIRReflectanceMap\bin\Debug\Resources\Help.htm
 C:\Users\admin\Documents\Elisa\03. Resources\03_Plugins\EOIRReflectanceMap\EOIRReflectanceMap\bin\Debug\Resources\Sun.png
+C:\Users\alfredo.c\Documents\GitHub\UIPlugin_EOIRReflectanceMap\EOIRReflectanceMap\bin\Debug\Resources\Help.htm
+C:\Users\alfredo.c\Documents\GitHub\UIPlugin_EOIRReflectanceMap\EOIRReflectanceMap\bin\Debug\Resources\Sun.png
+C:\Users\alfredo.c\Documents\GitHub\UIPlugin_EOIRReflectanceMap\EOIRReflectanceMap\bin\Debug\EOIRReflectanceMap.dll
+C:\Users\alfredo.c\Documents\GitHub\UIPlugin_EOIRReflectanceMap\EOIRReflectanceMap\bin\Debug\EOIRReflectanceMap.pdb
+C:\Users\alfredo.c\Documents\GitHub\UIPlugin_EOIRReflectanceMap\EOIRReflectanceMap\obj\Debug\FC.UIPlugin.EOIRReflectanceMap.csproj.AssemblyReference.cache
+C:\Users\alfredo.c\Documents\GitHub\UIPlugin_EOIRReflectanceMap\EOIRReflectanceMap\obj\Debug\EOIRReflectanceMap.Properties.Resources.resources
+C:\Users\alfredo.c\Documents\GitHub\UIPlugin_EOIRReflectanceMap\EOIRReflectanceMap\obj\Debug\FC.UIPlugin.EOIRReflectanceMap.UserInterface.resources
+C:\Users\alfredo.c\Documents\GitHub\UIPlugin_EOIRReflectanceMap\EOIRReflectanceMap\obj\Debug\FC.UIPlugin.EOIRReflectanceMap.csproj.GenerateResource.cache
+C:\Users\alfredo.c\Documents\GitHub\UIPlugin_EOIRReflectanceMap\EOIRReflectanceMap\obj\Debug\FC.UIPlugin.EOIRReflectanceMap.csproj.CoreCompileInputs.cache
+C:\Users\alfredo.c\Documents\GitHub\UIPlugin_EOIRReflectanceMap\EOIRReflectanceMap\obj\Debug\EOIRReflectanceMap.dll
+C:\Users\alfredo.c\Documents\GitHub\UIPlugin_EOIRReflectanceMap\EOIRReflectanceMap\obj\Debug\EOIRReflectanceMap.pdb

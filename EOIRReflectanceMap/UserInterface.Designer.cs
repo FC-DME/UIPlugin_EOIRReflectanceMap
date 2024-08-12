@@ -202,9 +202,9 @@
             this.checkBox_AddToConfig.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_AddToConfig.Location = new System.Drawing.Point(14, 224);
             this.checkBox_AddToConfig.Name = "checkBox_AddToConfig";
-            this.checkBox_AddToConfig.Size = new System.Drawing.Size(398, 20);
+            this.checkBox_AddToConfig.Size = new System.Drawing.Size(427, 20);
             this.checkBox_AddToConfig.TabIndex = 3;
-            this.checkBox_AddToConfig.Text = "Add reflectance map to the EOIR configuration for this scenario";
+            this.checkBox_AddToConfig.Text = "Add reflectance map to the EOIR configuration for this STK scenario";
             this.checkBox_AddToConfig.UseVisualStyleBackColor = true;
             // 
             // button_Help
